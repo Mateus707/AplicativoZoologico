@@ -9,16 +9,14 @@ export default StyleSheet.create({
       borderWidth:2,
       borderColor:'black',
     },
-    input:{
-      borderWidth:2,
-      borderColor:'black',
-      height: 60,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-      color: '#fff',
-      borderColor: '#fff',
-        
+    input:{  
+      height: 30,
+      margin:5,
+      padding:10,
+      borderRadius: 50,
+      color: '#000',
+      outlineStyle: 'none',
+      backgroundColor: '#fff'
     },
     text:{
       textAlign:'center'
@@ -26,7 +24,15 @@ export default StyleSheet.create({
     textTitulo:{
       textAlign:'center',
       fontWeight: 'bold',
-      fontSize: 24
+      fontSize: 20,
+      margin:5,
+      fontFamily: 'Roboto_700Light'
+
+    },
+    textSubTitulo:{
+      textAlign:'center',
+      fontSize: 12,
+      fontFamily: 'Roboto_100Thin'
     },
     button:{
       width: '20%',
@@ -36,15 +42,17 @@ export default StyleSheet.create({
     boxButton:{
       width:'100%',
       alignItems:'flex-end',
-     
-     
+ 
+    },
+    boxTitulo:{
+      flex: 0.25,
     },
     imgBackground:{
        flex: 1,
       justifyContent: 'center',
       padding: 40,
     }
-  
+    ,
      
     
 })

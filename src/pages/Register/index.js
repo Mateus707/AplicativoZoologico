@@ -1,25 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
 import styles from './styles';
 import { View,Text,Pressable,TextInput,ImageBackground} from 'react-native';
 import { useState } from 'react';
 import imgB from '../../../assets/img/animais-da-selva-tropical_24640-74478.avif';
+import {useFonts,Roboto_700Light,Roboto_100Thin } from '@expo-google-fonts/roboto';
+import { useNavigation } from '@react-navigation/native';
+
 export default function App(){
+    const navigation = useNavigation();
+
      const [value, onChangeText] = useState('');
-    
-  
+
+    const[fontLoaded] = useFonts({
+        Roboto_700Light,
+        Roboto_100Thin,
+    });
+ 
     return (
+        
         <View style={styles.container}>
             <ImageBackground source={imgB} resizeMode='cover' style={styles.imgBackground}>
             <View style={styles.boxTitulo}>
                 <Text style={styles.textTitulo}>Cadastro</Text>
+                <Text style={styles.textSubTitulo}>Para cadastra preencha os dados a seguir de maneira correta</Text>
             </View>
             <View style={styles.boxInput}>
             <TextInput
             style={styles.input}
-            editable
-            multiline
-            numberOfLines={4}
-            maxLength={40}
+          
             placeholder='nome'
             onChangeText={text => onChangeText(text)}
             value={value}
@@ -29,11 +36,9 @@ export default function App(){
             <View style={styles.boxInput}>
                 <TextInput 
                 style={styles.input}
-                editable
-                multiline
+
                 placeholder='email'
-                numberOfLines={4}
-                maxLength={40}
+          
                 onChangeText={text => onChangeText(text)}
                 value={value}
                 />
@@ -41,11 +46,8 @@ export default function App(){
             <View style={styles.boxInput}>
             <TextInput
             style={styles.input}
-            editable
-            multiline
-            placeholder='numero'
-            numberOfLines={4}
-            maxLength={40}
+            
+           placeholder='telefone'
             onChangeText={text => onChangeText(text)}
             value={value}
             />
@@ -54,22 +56,21 @@ export default function App(){
             <View style={styles.boxInput}>
                 <TextInput 
                 style={styles.input}
-                editable
-                multiline
+          
                 placeholder='senha'
-                numberOfLines={4}
-                maxLength={40}
+           
                 onChangeText={text => onChangeText(text)}
                 value={value}
                 />
             </View>
             <View style={styles.boxButton}>
                 <Pressable style={styles.button}>
-                    <Text style={styles.text}>Enviar</Text>
+                    <Text style={styles.text} onPress={() => navigation.navigate('home')}>Enviar</Text>
                 </Pressable>
             </View>
             </ImageBackground>
         </View>
+    
     )
 
 }

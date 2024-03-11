@@ -9,14 +9,14 @@ export default StyleSheet.create({
       borderWidth:2,
       borderColor:'black',
     },
-    input:{
-      borderWidth:2,
-      borderColor:'black',
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-  
+    input:{  
+      height: 30,
+      margin:5,
+      padding:10,
+      borderRadius: 50,
+      color: '#000',
+      outlineStyle: 'none',
+      backgroundColor: '#fff'
     },
     text:{
       textAlign:'center'
@@ -37,6 +37,13 @@ export default StyleSheet.create({
       borderWidth:2,
       borderColor:'black',
      
-    }
+    },  
+    imgBackground:{
+      flex: 1,
+     justifyContent: 'center',
+     padding: 40,
+   }
+   ,
+    
     
 })

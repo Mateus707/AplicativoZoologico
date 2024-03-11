@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+
 import styles from './styles';
 import { View,Text,Pressable,TextInput} from 'react-native';
 import { useState } from 'react';

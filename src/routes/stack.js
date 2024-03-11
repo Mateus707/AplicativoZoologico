@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import home from '../pages/home';
 import register from '../pages/Register';
-import UserInformation from '../pages/userInformation';
+import UserInformation from '../pages/UserInformation';
 
 
 const Stack = createNativeStackNavigator();
