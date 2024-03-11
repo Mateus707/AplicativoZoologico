@@ -18,8 +18,11 @@ export default StyleSheet.create({
       outlineStyle: 'none',
       backgroundColor: '#fff'
     },
-    text:{
-      textAlign:'center'
+    textButton:{
+      textAlign:'center',
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 16,
     },
     textTitulo:{
       textAlign:'center',
@@ -27,15 +30,19 @@ export default StyleSheet.create({
       fontSize: 24
     },
     button:{
-      width: '20%',
-      borderWidth:2,
-      borderColor:'black',
+      width: '50%',
+      height:30,
+      borderWidth:1,
+      borderRadius:50,
+      justifyContent: 'center',
+      backgroundColor:'#23800d',
+     
     },
     boxButton:{
+      padding: 10,
+      marginTop:10,
       width:'100%',
-      alignItems:'flex-end',
-      borderWidth:2,
-      borderColor:'black',
+      alignItems:'center',
      
     },  
     imgBackground:{

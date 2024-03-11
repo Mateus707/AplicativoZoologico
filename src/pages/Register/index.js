@@ -1,11 +1,10 @@
 import styles from './styles';
-import { View,Text,Pressable,TextInput,ImageBackground} from 'react-native';
+import { View,Text,Pressable,TextInput,ImageBackground,ActivityIndicator} from 'react-native';
 import { useState } from 'react';
 import imgB from '../../../assets/img/animais-da-selva-tropical_24640-74478.avif';
-import {useFonts,Roboto_700Light,Roboto_100Thin } from '@expo-google-fonts/roboto';
 import { useNavigation } from '@react-navigation/native';
 import {useEffect} from 'react'
-import { ActivityIndicator } from 'react-native-web';
+
 
 
 export default function App(){
@@ -13,34 +12,30 @@ export default function App(){
     const [load,setLoad] = useState(true);
      const [value, onChangeText] = useState('');
 
-    const[fontLoaded] = useFonts({
-        Roboto_700Light,
-        Roboto_100Thin,
-    });
-    
+   
 
     
-    useEffect(() => {
-        setTimeout(() => {
-            setLoad(false)
-        },1000)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoad(false)
+    //     },1000)
        
-    })
+    // })
     
-    if(load){
-        return (<ActivityIndicator style={styles.load}
-            animating={load}
-            color={'blue'}
-            size={'large'}
-            />)
-    }
+    // if(load){
+    //     return (<ActivityIndicator style={styles.load}
+    //         animating={load}
+    //         color={'blue'}
+    //         size={'large'}
+    //         />)
+    // }
     return (
         
         <View style={styles.container}>
             <ImageBackground source={imgB} resizeMode='cover' style={styles.imgBackground}>
             <View style={styles.boxTitulo}>
                 <Text style={styles.textTitulo}>Cadastro</Text>
-                <Text style={styles.textSubTitulo}>Para cadastra preencha os dados a seguir de maneira correta</Text>
+                <Text style={styles.textSubTitulo}>Para se cadastrar preencha os dados a seguir de maneira correta</Text>
             </View>
             <View style={styles.boxInput}>
             <TextInput
@@ -51,8 +46,7 @@ export default function App(){
             value={value}
             />
             
-            </View>
-            <View style={styles.boxInput}>
+          
                 <TextInput 
                 style={styles.input}
 
@@ -61,8 +55,8 @@ export default function App(){
                 onChangeText={text => onChangeText(text)}
                 value={value}
                 />
-            </View>
-            <View style={styles.boxInput}>
+            
+            
             <TextInput
             style={styles.input}
             
@@ -71,8 +65,8 @@ export default function App(){
             value={value}
             />
             
-            </View>
-            <View style={styles.boxInput}>
+            
+           
                 <TextInput 
                 style={styles.input}
           

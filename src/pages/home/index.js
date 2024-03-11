@@ -7,22 +7,22 @@ import {useEffect} from 'react'
 
 export default function App(){
     const navigation = useNavigation();
-    const [load,setLoad] = useState(true);
+    // const [load,setLoad] = useState(true);
     
-    useEffect(() => {
-        setTimeout(() => {
-            setLoad(false)
-        },1000)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoad(false)
+    //     },1000)
        
-    })
+    // })
     
-    if(load){
-        return (<ActivityIndicator style={styles.load}
-            animating={load}
-            color={'blue'}
-            size={'large'}
-            />)
-    }
+    // if(load){
+    //     return (<ActivityIndicator style={styles.load}
+    //         animating={load}
+    //         color={'blue'}
+    //         size={'large'}
+    //         />)
+    // }
     return (
         <View style={styles.container}>
           <ImageBackground source={imgB} resizeMode='cover' style={styles.imgBackground}>
@@ -53,7 +53,7 @@ export default function App(){
             </View>
             <View style={styles.boxButton}>
                 <Pressable style={styles.button}>
-                    <Text style={styles.text} onPress={() => navigation.navigate('UserInformation')}>Enviar</Text>
+                    <Text style={styles.textButton} onPress={() => navigation.navigate('UserInformation')}>Enviar</Text>
                 </Pressable>
             </View>
             </ImageBackground>
