@@ -32,6 +32,11 @@ export default StyleSheet.create({
     boxText:{
       justifyContent: 'flex-start',
       alignItems: 'center',
-    }
+    },
+    load:{
+      flex:1,
+      justifyContent:'center',
+      alignItems:'center'
+     }
     
 })

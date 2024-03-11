@@ -4,17 +4,36 @@ import { useState } from 'react';
 import imgB from '../../../assets/img/animais-da-selva-tropical_24640-74478.avif';
 import {useFonts,Roboto_700Light,Roboto_100Thin } from '@expo-google-fonts/roboto';
 import { useNavigation } from '@react-navigation/native';
+import {useEffect} from 'react'
+import { ActivityIndicator } from 'react-native-web';
+
 
 export default function App(){
     const navigation = useNavigation();
-
+    const [load,setLoad] = useState(true);
      const [value, onChangeText] = useState('');
 
     const[fontLoaded] = useFonts({
         Roboto_700Light,
         Roboto_100Thin,
     });
- 
+    
+
+    
+    useEffect(() => {
+        setTimeout(() => {
+            setLoad(false)
+        },1000)
+       
+    })
+    
+    if(load){
+        return (<ActivityIndicator style={styles.load}
+            animating={load}
+            color={'blue'}
+            size={'large'}
+            />)
+    }
     return (
         
         <View style={styles.container}>

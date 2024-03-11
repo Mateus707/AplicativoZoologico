@@ -1,11 +1,31 @@
 
 import styles from './styles';
-import { View,Text,Pressable,TextInput} from 'react-native';
+import { View,Text} from 'react-native';
 import { useState } from 'react';
+import { ActivityIndicator } from 'react-native-web';
+import {useEffect} from 'react'
+import { useNavigation } from '@react-navigation/native';
+
 export default function App(){
+
      const [value, onChangeText] = useState('');
+     const navigation = useNavigation();
+    const [load,setLoad] = useState(true);
     
-  
+    useEffect(() => {
+        setTimeout(() => {
+            setLoad(false)
+        },1000)
+       
+    })
+    
+    if(load){
+        return (<ActivityIndicator style={styles.load}
+            animating={load}
+            color={'blue'}
+            size={'large'}
+            />)
+        }
     return (
         <View style={styles.container}>
             <View style={styles.boxTitulo}>
