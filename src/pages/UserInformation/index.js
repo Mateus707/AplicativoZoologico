@@ -27,15 +27,11 @@ export default function App(){
     //     }
     return (
         <View style={styles.container}>
-            
-            <View style={styles.boxTitulo}>
-                <Text style={styles.textTitulo}>Informações do Usuario</Text>
-            </View>
             <View style={styles.boxText}>
-                <Text style={styles.text}>nome</Text>
-                <Text style={styles.text}>email</Text>
-                <Text style={styles.text}>numro</Text>
-                <Text style={styles.text}>senha</Text>
+                <Text style={styles.text}>Bruno</Text>
+                <Text style={styles.text}>Brunogeanini95@gmail.com</Text>
+                <Text style={styles.text}>(11) 982647313</Text>
+                <Text style={styles.text}>19 anos</Text>
             </View>
         </View>
     )
