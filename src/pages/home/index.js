@@ -1,7 +1,7 @@
 import styles from './styles';
-import { View,Text,Pressable,TextInput,ImageBackground, ActivityIndicator} from 'react-native';
+import { View,Text,Pressable,TextInput,Image, ActivityIndicator} from 'react-native';
 import { useState } from 'react';
-import imgB from '../../../assets/img/animais-da-selva-tropical_24640-74478.avif';
+import imgPanda from '../../../assets/img/Panda.png';
 import { useNavigation } from '@react-navigation/native';
 import {useEffect} from 'react'
 
@@ -25,39 +25,30 @@ export default function App(){
     // }
     return (
         <View style={styles.container}>
-          <ImageBackground source={imgB} resizeMode='cover' style={styles.imgBackground}>
-            
+            <View style={styles.boxImg}>
+                <Image  style={styles.img} source={imgPanda}/>
+            </View>
             <View style={styles.boxTitulo}>
                 <Text style={styles.textTitulo}>Login</Text>
-            </View>
-           
+            </View>   
             <View style={styles.boxInput}>
             <TextInput
             style={styles.input}
             onChangeText={text => onChangeText(text)}
-        
             />
-            
-
-            
+            <TextInput 
+            style={styles.input}
+            onChangeText={text => onChangeText(text)}
+            /> 
             </View>
-            <View style={styles.boxInput}>
-                <TextInput 
-                style={styles.input}
-                onChangeText={text => onChangeText(text)}
-                
-                />
-                
-                    
-                
+            <View style={styles.boxSenha}>
+                <Text style={styles.textSenha}>Esqueceu sua senha ?</Text>
             </View>
             <View style={styles.boxButton}>
                 <Pressable style={styles.button}>
-                    <Text style={styles.textButton} onPress={() => navigation.navigate('UserInformation')}>Enviar</Text>
+                    <Text style={styles.textButton} onPress={() => navigation.navigate('UserInformation')}>Logar</Text>
                 </Pressable>
             </View>
-            </ImageBackground>
-
         </View>
     )
 
