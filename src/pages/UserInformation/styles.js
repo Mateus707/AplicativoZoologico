@@ -8,7 +8,7 @@ export default StyleSheet.create({
       borderColor:'black',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'green'
+      backgroundColor: '#3fdc34'
     },
     text:{
       textAlign:'center',

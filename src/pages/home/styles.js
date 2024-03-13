@@ -56,20 +56,24 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
       },
-      textTitulo:{
+    textTitulo:{
         textAlign:'center',
         fontWeight: 'bold',
-        fontSize: 36
-      },
-      button:{
+        fontSize: 36,
+        fontFamily: 'Truculenta-Regular'
+    },
+    button:{
         width: '50%',
         height:40,  
         borderRadius:50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#3fdc34'
+        backgroundColor: '#3fdc34',
+        shadowColor: '#000',
+        shadowOpacity: 1,
+        shadowRadius: 20,
        
-      },
+    },
     img:{
       width:'90%',
       height:'80%',
