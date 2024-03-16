@@ -17,14 +17,14 @@ export default StyleSheet.create({
  
     },
     boxTitulo:{
-      flex: 0.5,
+      flex: 0.4,
       borderWidth:2,
       borderColor:'black',
       justifyContent:'center',
       alignItems:'center'
     },
     boxInput:{
-      flex:0.25,
+      flex:0.35,
       borderWidth:2,
       borderColor:'black',
       justifyContent:'center',
@@ -32,13 +32,14 @@ export default StyleSheet.create({
     },
     input:{  
       width: '80%',
-        height: 30,
+        height: 40,
         margin:5,
         padding:10,
         borderRadius: 50,
         color: '#fff',
         outlineStyle: 'none',
-        backgroundColor: '#3fdc34'
+        backgroundColor: '#3fdc34',
+  
       },
     text:{
       textAlign:'center',

@@ -7,22 +7,22 @@ import {useEffect} from 'react'
 
 export default function App(){
     const navigation = useNavigation();
-    // const [load,setLoad] = useState(true);
+    const [load,setLoad] = useState(true);
     
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setLoad(false)
-    //     },1000)
+    useEffect(() => {
+        setTimeout(() => {
+            setLoad(false)
+        },1000)
        
-    // })
+    })
     
-    // if(load){
-    //     return (<ActivityIndicator style={styles.load}
-    //         animating={load}
-    //         color={'blue'}
-    //         size={'large'}
-    //         />)
-    // }
+    if(load){
+        return (<ActivityIndicator style={styles.load}
+            animating={load}
+            color={'blue'}
+            size={'large'}
+            />)
+    }
     return (
         <View style={styles.container}>
             <View style={styles.boxImg}>
@@ -42,11 +42,11 @@ export default function App(){
             /> 
             </View>
             <View style={styles.boxSenha}>
-                <Text style={styles.textSenha}>Esqueceu sua senha ?</Text>
+                <Text style={styles.textSenha} onPress={() => navigation.navigate('register')}>Esqueceu sua senha ?</Text>
             </View>
             <View style={styles.boxButton}>
-                <Pressable style={styles.button}>
-                    <Text style={styles.textButton} onPress={() => navigation.navigate('UserInformation')}>Logar</Text>
+                <Pressable style={styles.button} onPress={() => navigation.navigate('UserInformation')}>
+                    <Text style={styles.textButton}>Logar</Text>
                 </Pressable>
             </View>
         </View>
