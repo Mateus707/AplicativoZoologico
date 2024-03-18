@@ -23,13 +23,13 @@ export default function App(){
    
    
     function insert(){
-      
+        if(nome && email && telefone && senha != undefined){
         AsyncStorage.setItem('nome', nome)
         .then(() =>{
-            console.log("Dados Armazenados com sucesso!");
-        })
+             console.log("Dados Armazenados com sucesso!");
+         })
         .catch(error => {
-            console.error("Deu bom nao meu chegado",error);
+             console.error("Deu bom nao meu chegado",error);
         });
         AsyncStorage.setItem('email', email)
         .then(() =>{
@@ -52,10 +52,15 @@ export default function App(){
         .catch(error => {
             console.error("Deu bom nao meu chegado",error);
         });
+        }
+     
+        
     }
     const chamadorFuncao = () => {
         insert();
+       if(nome && email && telefone && senha != undefined){
         navigation.navigate('home');
+       }
     }
 
     useEffect(() => {
