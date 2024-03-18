@@ -18,6 +18,8 @@ export default function App(){
     const [emailConfi, setEmailConfi] = useState();
     const [senhaConfi, setSenhaConfi] = useState();
 
+    const [safad, setSafad] = useState();
+
 
     if(email == undefined){
         AsyncStorage.getItem('email')
@@ -51,7 +53,6 @@ export default function App(){
     }); 
     }
    
-    
 
 
     useEffect(() => {
@@ -68,7 +69,7 @@ export default function App(){
             }
             else{
                 console.log("estou aqui")
-                return (<Text style={styles.textButton}>Email ou senha incorretos</Text>)
+                setSafad("Email ou senha incorretos")
             }
         }
     }
@@ -83,6 +84,7 @@ export default function App(){
     }
     return (
         <View style={styles.container}>
+            
             <View style={styles.boxImg}>
                 <Image  style={styles.img} source={imgPanda}/>
             </View>
@@ -106,6 +108,7 @@ export default function App(){
                 <Pressable style={styles.button} onPress={userLogin}>
                     <Text style={styles.textButton}>Logar</Text>
                 </Pressable>
+                    <Text style={styles.safadoText}>{safad}</Text>
             </View>
         </View>
     )
