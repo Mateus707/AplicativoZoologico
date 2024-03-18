@@ -26,6 +26,7 @@ export default StyleSheet.create({
       flex:0.20,
       alignItems:'center',
       justifyContent: 'center',
+      gap: 10,
     },
     boxSenha:{
       flex:0.10,
@@ -42,7 +43,7 @@ export default StyleSheet.create({
     },
     input:{  
       width: '80%',
-        height: 30,
+        height: 40,
         margin:5,
         padding:10,
         borderRadius: 50,
@@ -64,7 +65,7 @@ export default StyleSheet.create({
     },
     button:{
         width: '50%',
-        height:40,  
+        height:42,  
         borderRadius:50,
         justifyContent: 'center',
         alignItems: 'center',

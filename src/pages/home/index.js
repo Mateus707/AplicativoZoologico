@@ -66,10 +66,10 @@ export default function App(){
             if((senha == senhaConfi) && (email == emailConfi)){
                 return navigation.navigate('UserInformation')
             }
-           }
-        else{
-            console.log("estou aqui")
-            return (<Text style={styles.boxButton}>Email ou senha incorretos</Text>)
+            else{
+                console.log("estou aqui")
+                return (<Text style={styles.textButton}>Email ou senha incorretos</Text>)
+            }
         }
     }
  

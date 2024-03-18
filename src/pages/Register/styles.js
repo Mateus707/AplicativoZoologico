@@ -28,7 +28,8 @@ export default StyleSheet.create({
       borderWidth:2,
       borderColor:'black',
       justifyContent:'center',
-      alignItems:'center'
+      alignItems:'center',
+      gap: 15,
     },
     input:{  
       width: '80%',
@@ -61,7 +62,7 @@ export default StyleSheet.create({
     },
       button:{
         width: '60%',
-        height:30,  
+        height:40,  
         borderRadius:50,
         justifyContent: 'center',
         alignItems: 'center',
