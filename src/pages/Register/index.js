@@ -1,16 +1,10 @@
 import styles from './styles';
-import { View,Text,Pressable,TextInput,ImageBackground,ActivityIndicator} from 'react-native';
+import { View,Text,Pressable,TextInput,Image,ActivityIndicator} from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {useEffect} from 'react'
-import {
-    Octicons,
-    Fontisto
-  } from '@expo/vector-icons'
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-
+import { carregar } from './axios';
+import {setTelefoneStorage,setEmailStorage,setSenhaStorage,setNomeStorage} from './asyncStorage';
+import leao from '../../../assets/img/pngwing.com.png'
 export default function App(){
     
         const navigation = useNavigation();
@@ -20,52 +14,22 @@ export default function App(){
         const [telefone, setTelefone] = useState();
         const [senha, setSenha] = useState();
 
-   
-   
-    function insert(){
-        if(nome && email && telefone && senha != undefined){
-        AsyncStorage.setItem('nome', nome)
-        .then(() =>{
-             console.log("Dados Armazenados com sucesso!");
-         })
-        .catch(error => {
-             console.error("Deu bom nao meu chegado",error);
-        });
-        AsyncStorage.setItem('email', email)
-        .then(() =>{
-            console.log("Dados Armazenados com sucesso!");
-        })
-        .catch(error => {
-            console.error("Deu bom nao meu chegado",error);
-        });
-        AsyncStorage.setItem('telefone', telefone)
-        .then(() =>{
-            console.log("Dados Armazenados com sucesso!");
-        })
-        .catch(error => {
-            console.error("Deu bom nao meu chegado",error);
-        });
-        AsyncStorage.setItem('senha', senha)
-        .then(() =>{
-            console.log("Dados Armazenados com sucesso!");
-        })
-        .catch(error => {
-            console.error("Deu bom nao meu chegado",error);
-        });
-        }
-     
-        
+    const carregarStorage = async()=>{
+         setNomeStorage(nome);
+         setSenhaStorage(senha);
+         setEmailStorage(email);
+         setTelefoneStorage(telefone);
     }
-    const chamadorFuncao = () => {
-        insert();
+    const chamadorFuncao = async() => {
+        await carregar(nome,email,senha,telefone);
+        await carregarStorage();
        if(nome && email && telefone && senha != undefined){
         navigation.navigate('home');
        }
     }
 
-    useEffect(() => {
+    useState(() => {
         setTimeout(() => {
-            console.log('estou passando no useEFFECT')
             setLoad(false)
         },1000)
        
@@ -80,9 +44,8 @@ export default function App(){
     }
     return (
         <View style={styles.container}>
-            <View style={styles.boxTitulo}>
-                <Text style={styles.textTitulo}>Cadastro</Text>
-                <Text style={styles.textSubTitulo}>Para se cadastrar preencha os dados a seguir de maneira correta</Text>
+             <View style={styles.boxImg}>
+                <Image  style={styles.img} source={leao}/>
             </View>
             <View style={styles.boxInput}>
                 <TextInput
@@ -103,18 +66,15 @@ export default function App(){
             <TextInput 
                 style={styles.input}
                 placeholder='senha'
+                secureTextEntry={true}
                 onChangeText={(senha) => {setSenha(senha)}}
-                />
-             
+                />        
             </View>
             <View style={styles.boxButton}>
                 <Pressable style={styles.button} onPress={chamadorFuncao} >
                     <Text style={styles.text}>Enviar</Text>
                 </Pressable>
-            </View>
-        
-        </View>
-    
+            </View>   
+        </View> 
     )
-
 }

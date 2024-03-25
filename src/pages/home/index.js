@@ -3,78 +3,45 @@ import { View,Text,Pressable,TextInput,Image, ActivityIndicator} from 'react-nat
 import { useState } from 'react';
 import imgPanda from '../../../assets/img/Panda.png';
 import { useNavigation } from '@react-navigation/native';
-import {useEffect} from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { carregar } from './axios';
+import { getEmailStorage,getSenhaStorage } from './asyncStorage';
 
 export default function App(){
     const navigation = useNavigation();
-    
     const [load,setLoad] = useState(true);
-
-    const [email, setEmail] = useState();
-    const [senha, setSenha] = useState();
-
     const [emailConfi, setEmailConfi] = useState();
     const [senhaConfi, setSenhaConfi] = useState();
+    const [email, setEmail] = useState();
+    const [senha, setSenha] = useState();
+    const [dados,setDados] = useState();
+    const [id,setId] = useState();
 
-    const [safad, setSafad] = useState();
+    const carregarStorage = async() =>{
+        const [email, senha] = await Promise.all([getEmailStorage(), getSenhaStorage()]);
+        setEmail(dados.email);
+        setSenha(dados.senha);
+    };
+    const carregarApi = async() =>{
+        const response = await carregar(emailConfi,senhaConfi);
+        setDados(response);
+        setId(response.id)
 
-
-    if(email == undefined){
-        AsyncStorage.getItem('email')
-        .then(email => {
-        if (email !== null) {
-            setEmail(email)
-        console.log('Valor recuperado:', email);
-        
-        } else {
-        console.log('Nenhum valor encontrado para a chave especificada');
+        if(id){
+           return navigation.navigate('UserInformation',{idUser: id});
+        }        
+    }
+    const carregarDados = async() => {
+        await carregarApi();
+        if(dados){
+            await carregarStorage();
         }
-        })
-        .catch(error => {
-        console.error('Erro ao recuperar dados:', error);
-        }); 
-    
     }
-    if(senha == undefined){
-        AsyncStorage.getItem('senha')
-    .then(senha => {
-    if (senha !== null) {
-        setSenha(senha)
-    console.log('Valor recuperado:', senha);
-    
-    } else {
-    console.log('Nenhum valor encontrado para a chave especificada');
-    }
-    })
-    .catch(error => {
-    console.error('Erro ao recuperar dados:', error);
-    }); 
-    }
-   
-
-
-    useEffect(() => {
+    useState(() => {
         setTimeout(() => {
+            
             setLoad(false)
         },1000)
-       
     });
-
-    const userLogin = () => {
-        if(email && senha != undefined){
-            if((senha == senhaConfi) && (email == emailConfi)){
-                return navigation.navigate('UserInformation')
-            }
-            else{
-                console.log("estou aqui")
-                setSafad("Email ou senha incorretos")
-            }
-        }
-    }
- 
-    
     if(load){
         return (<ActivityIndicator style={styles.load}
             animating={load}
@@ -95,20 +62,22 @@ export default function App(){
             <TextInput
             style={styles.input}
             onChangeText={emailConfi => setEmailConfi(emailConfi)}
+            placeholder='email'
             />
             <TextInput 
             style={styles.input}
+            secureTextEntry={true}
             onChangeText={senhaConfi => setSenhaConfi(senhaConfi)}
+            placeholder='senha'
             /> 
             </View>
             <View style={styles.boxSenha}>
                 <Text style={styles.textSenha} onPress={() => navigation.navigate('register')}>Esqueceu sua senha ?</Text>
             </View>
             <View style={styles.boxButton}>
-                <Pressable style={styles.button} onPress={userLogin}>
+                <Pressable style={styles.button} onPress={carregarDados}>
                     <Text style={styles.textButton}>Logar</Text>
                 </Pressable>
-                    <Text style={styles.safadoText}>{safad}</Text>
             </View>
         </View>
     )
