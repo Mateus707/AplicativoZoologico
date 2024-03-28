@@ -76,7 +76,45 @@ export default StyleSheet.create({
       width:'60%',
       height:'70%',
   
-   },
+   },  buttonNP:{
+    backgroundColor: 'white',
+    width: 200,
+    height:40,
+    justifyContent:'center',
+    alignItems:'center',
+    borderWidth: 2,
+    borderColor: 'gold',
+    color: 'gold',
+    fontSize: '18pt',
+  },
+modal:{
+  flex: 1,
+  height: '50%',
+  width: '100%',
+  backgroundColor: 'rgba(0,0,0,0.8)',
+  alignSelf: 'center',
+  justifyContent: 'center',
+  alignItems: 'center'
+},
+
+boxModal: {
+  flex: 0.33,
+  borderRadius: 5,
+  justifyContent: "center",
+  alignItems: "center",
+  borderWidth: 2,
+  borderColor: 'gold',
+  backgroundColor: 'white',
+
+},
+
+textFinal: {
+  fontSize: '18pt',
+  color: 'gold',
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: 10,
+}
      
     
 })

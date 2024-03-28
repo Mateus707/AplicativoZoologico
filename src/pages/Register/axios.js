@@ -18,9 +18,10 @@ export const carregar = async (nome,email,senha,telefone) => {
     try {
       const response = await axios.post('http://localhost/bdetec/userInsert', dadosUser, axiosConfig );
       console.log(response.data)
+      return false
     } catch (error) {
       console.error('Erro ao criar jogador1', error );
-      return false;
+      return true;
     }
 
 

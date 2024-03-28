@@ -1,40 +1,29 @@
 import styles from './styles';
-import { View,Text,Pressable,TextInput,Image, ActivityIndicator} from 'react-native';
+import { View,Text,Pressable,TextInput,Image} from 'react-native';
 import { useState } from 'react';
 import imgPanda from '../../../assets/img/Panda.png';
 import { useNavigation } from '@react-navigation/native';
 import { carregar } from './axios';
-import { getEmailStorage,getSenhaStorage } from './asyncStorage';
+import { setEmailStorage,setSenhaStorage } from './asyncStorage';
+import LoadView from '../../components/loadView';
 
 export default function App(){
     const navigation = useNavigation();
-    const [load,setLoad] = useState(true);
+
     const [emailConfi, setEmailConfi] = useState();
     const [senhaConfi, setSenhaConfi] = useState();
-    const [email, setEmail] = useState();
-    const [senha, setSenha] = useState();
-    const [dados,setDados] = useState();
-    const [id,setId] = useState();
+    const [load,setLoad] = useState(true);
 
-    const carregarStorage = async() =>{
-        const [email, senha] = await Promise.all([getEmailStorage(), getSenhaStorage()]);
-        setEmail(dados.email);
-        setSenha(dados.senha);
-    };
     const carregarApi = async() =>{
-        const response = await carregar(emailConfi,senhaConfi);
-        setDados(response);
-        setId(response.id)
-
-        if(id){
-           return navigation.navigate('UserInformation',{idUser: id});
-        }        
+        const response = await carregar(emailConfi,senhaConfi);    
+        await setEmailStorage(response.email)
+        await setSenhaStorage(response.senha)
+        if(response.id){
+            return navigation.navigate('UserInformation',{idUser: response.id});
+        }
     }
     const carregarDados = async() => {
         await carregarApi();
-        if(dados){
-            await carregarStorage();
-        }
     }
     useState(() => {
         setTimeout(() => {
@@ -43,15 +32,10 @@ export default function App(){
         },1000)
     });
     if(load){
-        return (<ActivityIndicator style={styles.load}
-            animating={load}
-            color={'blue'}
-            size={'large'}
-            />)
+        return (<LoadView/>)
     }
     return (
         <View style={styles.container}>
-            
             <View style={styles.boxImg}>
                 <Image  style={styles.img} source={imgPanda}/>
             </View>

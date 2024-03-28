@@ -1,49 +1,49 @@
 import styles from './styles';
-import { View,Text,Pressable,TextInput,Image,ActivityIndicator} from 'react-native';
+import { View,Text,Pressable,TextInput,Image} from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { carregar } from './axios';
-import {setTelefoneStorage,setEmailStorage,setSenhaStorage,setNomeStorage} from './asyncStorage';
-import leao from '../../../assets/img/pngwing.com.png'
+import leao from '../../../assets/img/pngwing.com.png';
+import LoadView from '../../components/loadView';
+import ChamaModal from '../../components/modal';
 export default function App(){
     
         const navigation = useNavigation();
-        const [load,setLoad] = useState(false);
+        const [load,setLoad] = useState(true);
+        const [modalVisible, setModalVisible] = useState(false);
         const [nome, setNome] = useState();
         const [email, setEmail] = useState();
         const [telefone, setTelefone] = useState();
         const [senha, setSenha] = useState();
 
-    const carregarStorage = async()=>{
-         setNomeStorage(nome);
-         setSenhaStorage(senha);
-         setEmailStorage(email);
-         setTelefoneStorage(telefone);
-    }
     const chamadorFuncao = async() => {
-        await carregar(nome,email,senha,telefone);
-        await carregarStorage();
-       if(nome && email && telefone && senha != undefined){
-        navigation.navigate('home');
+       const response = await carregar(nome,email,senha,telefone);
+       
+       if(response){
+            setModalVisible(response)
+            console.log(modalVisible)
        }
-    }
+       if(!response){
+        navigation.navigate('Login');
+       }
 
+   }
+   const closeModal = () =>{
+    setModalVisible(false);
+   }
+       
+    
     useState(() => {
         setTimeout(() => {
             setLoad(false)
         },1000)
-       
-    })
-    
+    });
     if(load){
-        return (<ActivityIndicator style={styles.load}
-            animating={load}
-            color={'blue'}
-            size={'large'}
-            />)
+        return (<LoadView/>)
     }
     return (
         <View style={styles.container}>
+            
              <View style={styles.boxImg}>
                 <Image  style={styles.img} source={leao}/>
             </View>
@@ -68,7 +68,8 @@ export default function App(){
                 placeholder='senha'
                 secureTextEntry={true}
                 onChangeText={(senha) => {setSenha(senha)}}
-                />        
+                />  
+                {modalVisible && <ChamaModal closeModal={closeModal} />}      
             </View>
             <View style={styles.boxButton}>
                 <Pressable style={styles.button} onPress={chamadorFuncao} >
