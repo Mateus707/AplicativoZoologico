@@ -7,6 +7,7 @@ import LoadView from '../../components/loadView';
 export default function Splash({navigation}){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [id,setId] = useState("");
 
     useEffect(() => {
         const cache = async() => {
@@ -22,14 +23,19 @@ export default function Splash({navigation}){
             
             await AsyncStorage.getItem('senha').then(senha => {
                 setSenha(senha)
+               
                 
             })
+             
+            await AsyncStorage.getItem('id').then(id => {
+                setId(id)
+            })   
         }
         cache();
         
         setTimeout(() => {
             if (email && senha !== "") {
-                navigation.navigate("UserInformation");
+                navigation.navigate("UserInformation",{idUser: id});
             } else {
                 navigation.navigate("home");
             }

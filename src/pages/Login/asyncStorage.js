@@ -23,9 +23,9 @@
 // //    }
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const setNomeStorage = async(nome)=>{
+export const setIdStorage = async(id)=>{
         try {
-         await AsyncStorage.setItem('nome', nome);
+         await AsyncStorage.setItem('id', id);
         return true
         } catch (error) {
             console.error("Deu bom nao meu chegado",error);
@@ -58,6 +58,8 @@ export const setTelefoneStorage = async(telefone)=>{
         console.error("Deu bom nao meu chegado",error);
         return false
     }
+
+    
 }
 
 

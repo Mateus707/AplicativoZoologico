@@ -3,7 +3,7 @@ import { View,Text,Pressable,TextInput,Image, ImageBackground} from 'react-nativ
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { carregar } from './axios';
-import { setEmailStorage,setSenhaStorage } from './asyncStorage';
+import { setEmailStorage,setSenhaStorage,setIdStorage} from './asyncStorage';
 import LoadView from '../../components/loadView';
 
 const fundo = require('../../../assets/img/Fundo.png')
@@ -18,9 +18,11 @@ export default function App(){
 
     const carregarApi = async() =>{
         const response = await carregar(emailConfi,senhaConfi);    
-        await setEmailStorage(response.email)
-        await setSenhaStorage(response.senha)
+        await setEmailStorage(response.email);
+        await setSenhaStorage(response.senha);
+        await setIdStorage(response.id);
         if(response.id){
+            
             return navigation.navigate('UserInformation',{idUser: response.id});
         }
     }
