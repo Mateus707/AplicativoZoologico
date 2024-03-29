@@ -1,11 +1,14 @@
 import styles from './styles';
-import { View,Text,Pressable,TextInput,Image} from 'react-native';
+import { View,Text,Pressable,TextInput,Image, ImageBackground} from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { carregar } from './axios';
-import leao from '../../../assets/img/pngwing.com.png';
 import LoadView from '../../components/loadView';
 import ChamaModal from '../../components/modal';
+
+const fundo = require('../../../assets/img/Fundo.png')
+const logo = require('../../../assets/img/Logo.png')
+
 export default function App(){
     
         const navigation = useNavigation();
@@ -42,11 +45,8 @@ export default function App(){
         return (<LoadView/>)
     }
     return (
-        <View style={styles.container}>
-            
-             <View style={styles.boxImg}>
-                <Image  style={styles.img} source={leao}/>
-            </View>
+        <ImageBackground source = {fundo} style={styles.imageBackground}>
+            <Image source={logo} style = {styles.logo}/>
             <View style={styles.boxInput}>
                 <TextInput
                 style={styles.input}
@@ -68,14 +68,14 @@ export default function App(){
                 placeholder='senha'
                 secureTextEntry={true}
                 onChangeText={(senha) => {setSenha(senha)}}
-                />  
-                {modalVisible && <ChamaModal closeModal={closeModal} />}      
+                />        
+            {modalVisible && <ChamaModal closeModal={closeModal} />}      
             </View>
             <View style={styles.boxButton}>
                 <Pressable style={styles.button} onPress={chamadorFuncao} >
-                    <Text style={styles.text}>Enviar</Text>
+                    <Text style={styles.textButton}>Enviar</Text>
                 </Pressable>
             </View>   
-        </View> 
+        </ImageBackground>  
     )
 }

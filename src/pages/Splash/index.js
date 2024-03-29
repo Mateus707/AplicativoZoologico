@@ -29,9 +29,9 @@ export default function Splash({navigation}){
         
         setTimeout(() => {
             if (email && senha !== "") {
-                navigation.navigate("home");
+                navigation.navigate("UserInformation");
             } else {
-                navigation.navigate("Login");
+                navigation.navigate("home");
             }
             
         }, 3000);

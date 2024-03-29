@@ -1,45 +1,69 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container: {
+    imageBackground: {
       flex: 1,
-      backgroundColor: '#fff',
-      borderWidth:2,
-      borderColor:'black',
+      width: '100%',
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    logo: {
+      marginTop: '10%',
+    },
+    boxInput:{
+      marginTop: '20%',
+      gap: 20,
+      width: '60%',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#3fdc34'
     },
-    text:{
-      textAlign:'center',
-      fontSize: 21,
-      fontFamily: 'Truculenta-Regular'
-    },
-    button:{
-      width: '20%',
-      borderWidth:2,
-      borderColor:'black',
+    input:{  
+      width: '100%',
+      height: 40,
+      padding:10,
+      borderRadius: 10,
+      outlineStyle: 'none',
+      borderWidth: 1,
+      borderColor: '#205732'
     },
     boxButton:{
-      width:'100%',
-      alignItems:'flex-end',
-      borderWidth:2,
-      borderColor:'black',
-     
-    },
-    boxText:{
-      justifyContent: 'flex-start',
-      flex: 0.25,
+      marginTop: '5%',
+      gap: 20,
+      width: '50%',
+    },  
+    button:{
+      width: '100%',
+      height: 40,
+      backgroundColor: '#205732',
+      borderRadius: 8,
+      justifyContent: 'center',
       alignItems: 'center',
-      borderWidth: 2,
-      backgroundColor: 'white',
-      justifyContent: 'space-evenly',
-      padding: 10,
+    },
+    textButton:{
+      textAlign:'center',
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 16,
+    },
+    boxButtonEditar: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'flex-end'
+    },
+    buttonEditar: {
+      width: 20,
+      height: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    editing: {
+      width: '100%',
+      height: '100%'
     },
     load:{
       flex:1,
       justifyContent:'center',
       alignItems:'center'
-     }
-    
+     },     
 })
