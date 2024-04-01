@@ -5,7 +5,7 @@ import register from '../pages/Register';
 import UserInformation from '../pages/UserInformation';
 import Login from '../pages/Login';
 import Splash from '../pages/Splash';
-
+import Territorio from '../pages/Territorios';
 const Stack = createNativeStackNavigator();
 
 export default function StackRoutes() {
@@ -57,6 +57,16 @@ export default function StackRoutes() {
         component={Splash}
         options={{
             title: 'Splash',
+            headerStyle: { backgroundColor: 'white' },
+            headerTintColor: 'white',
+            headerShown: false,
+          }}
+    />
+     <Stack.Screen
+        name= 'Territorio'
+        component={Territorio}
+        options={{
+            title: 'Territorio',
             headerStyle: { backgroundColor: 'white' },
             headerTintColor: 'white',
             headerShown: false,

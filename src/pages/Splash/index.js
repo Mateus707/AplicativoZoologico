@@ -2,13 +2,14 @@ import { ImageBackground, StyleSheet } from "react-native";
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import img from '../../../assets/img/1.png';
-import LoadView from '../../components/loadView';
+import { carregar } from './axios';
 
 export default function Splash({navigation}){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [id,setId] = useState("");
 
+ 
     useEffect(() => {
         const cache = async() => {
             await AsyncStorage.getItem('email').then(email =>{
@@ -31,14 +32,24 @@ export default function Splash({navigation}){
                 setId(id)
             })   
         }
+        const carregarApi = async() =>{
+            const response = await carregar(email,senha);    
+    
+            if(response.id){
+                setTimeout(() => {
+                return navigation.navigate('UserInformation',{idUser: response.id});
+        }   ,3000);
+            }
+        }
+        
         cache();
+     carregarApi();
+        
         
         setTimeout(() => {
-            if (email && senha !== "") {
-                navigation.navigate("UserInformation",{idUser: id});
-            } else {
+         
                 navigation.navigate("home");
-            }
+            
             
         }, 3000);
         
