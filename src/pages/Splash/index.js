@@ -37,7 +37,8 @@ export default function Splash({navigation}){
     
             if(response.id){
                 setTimeout(() => {
-                return navigation.navigate('UserInformation',{idUser: response.id});
+                // return navigation.navigate('UserInformation',{idUser: response.id});
+                return navigation.navigate('Territorio');
         }   ,3000);
             }
         }
